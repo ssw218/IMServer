@@ -16,6 +16,7 @@ public class UserBean {
 	public static final String GROUP_CATEGORY = "group_category";
 	public static final String FIRST_REGISTER = "first_register";
 	public static final String LAST_ONLINE = "last_online";
+	public static final String IPS = "ips";
 	
 	private int id;
 	private String userName;
@@ -26,6 +27,8 @@ public class UserBean {
 	private String groupCategory;
 	private Timestamp firstRegister;
 	private Timestamp lastOnline;
+	private String ips;
+	
 	
 	public UserBean() {
 		id = 0;
@@ -46,7 +49,7 @@ public class UserBean {
 		// (lyk|kyl),(lhy) 
 		String[] friendArray = friends.split(",");
 		for(String next: friendArray) {
-			String[] temp = next.substring(1, next.length() - 1).split("|");
+			String[] temp = next.split("|");
 			for(String next2: temp) {
 				friendList.add(next2);
 			}
@@ -59,7 +62,7 @@ public class UserBean {
 		ArrayList<String> friendCategoryList = getAllFriendCategory();
 		String[] friendArray = friends.split(",");
 		for(int i = 0; i < friendArray.length; i++) {
-			String[] temp = friendArray[i].substring(1, friendArray[i].length() - 1).split("|");
+			String[] temp = friendArray[i].split("|");
 			ArrayList<String> friendsList = new ArrayList<String>();
 			friendsList.clear();
 			friendsMap.put(friendCategoryList.get(i), friendsList);
@@ -144,6 +147,14 @@ public class UserBean {
 
 	public void setLastOnline(Timestamp lastOnline) {
 		this.lastOnline = lastOnline;
+	}
+
+	public String getIps() {
+		return ips;
+	}
+
+	public void setIps(String ips) {
+		this.ips = ips;
 	}
 	
 	

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<reportenv>
+  <datasource>
+    <server>127.0.0.1</server>
+    <port>3306</port>
+    <database>instant_messaging</database>
+    <username>root</username>
+    <password>123456</password>
+  </datasource>
+</reportenv>
