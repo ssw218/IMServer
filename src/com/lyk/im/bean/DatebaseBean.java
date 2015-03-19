@@ -10,6 +10,14 @@ public class DatebaseBean {
 	public DatebaseBean() {
 		
 	}
+	
+	public String toString() {
+		return "Server: " + server + "\n" +
+				"Port: " + port + "\n" + 
+				"Datebase: " + datebase + "\n" + 
+				"User: " + user + "\n" +
+				"Password: " + password;
+	}
 
 	public String getServer() {
 		return server;
