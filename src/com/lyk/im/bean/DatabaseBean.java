@@ -1,20 +1,20 @@
 package com.lyk.im.bean;
 
-public class DatebaseBean {
+public class DatabaseBean {
 	private String server;
 	private String port; 
-	private String datebase;
+	private String database;
 	private String user;
 	private String password;
 	
-	public DatebaseBean() {
+	public DatabaseBean() {
 		
 	}
 	
 	public String toString() {
 		return "Server: " + server + "\n" +
 				"Port: " + port + "\n" + 
-				"Datebase: " + datebase + "\n" + 
+				"Database: " + database + "\n" + 
 				"User: " + user + "\n" +
 				"Password: " + password;
 	}
@@ -35,12 +35,12 @@ public class DatebaseBean {
 		this.port = port;
 	}
 
-	public String getDatebase() {
-		return datebase;
+	public String getDatabase() {
+		return database;
 	}
 
 	public void setDatebase(String datebase) {
-		this.datebase = datebase;
+		this.database = datebase;
 	}
 
 	public String getUser() {

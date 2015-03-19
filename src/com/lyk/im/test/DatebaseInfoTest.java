@@ -1,6 +1,6 @@
 package com.lyk.im.test;
 
-import com.lyk.im.bean.DatebaseBean;
+import com.lyk.im.bean.DatabaseBean;
 import com.lyk.im.util.DatebaseInfo;
 
 public class DatebaseInfoTest {
@@ -9,7 +9,7 @@ public class DatebaseInfoTest {
 		// TODO Auto-generated method stub
 		DatebaseInfo info = new DatebaseInfo();
 		info.readDatebaseInfo();
-		DatebaseBean bean = info.getDatebaseInfo();
+		DatabaseBean bean = info.getDatebaseInfo();
 		System.out.println(bean.toString());
 	}
 
