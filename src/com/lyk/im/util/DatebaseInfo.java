@@ -23,8 +23,17 @@ public class DatebaseInfo {
 		info = new DatabaseBean();
 	}
 	
-	public void readDatebaseInfo() {
-		File file = new File("Resources\\MySQLConfig.xml");
+//	public void readDatebaseInfo() {
+//		info.setServer("127.0.0.1");
+//		info.setPort("3306");
+//		info.setDatebase("instant_messaging");
+//		info.setUser("root");
+//		info.setPassword("123456");
+//	}
+	
+	public void readDatebaseInfo(String path) {
+		System.out.println("readDatebaseInfo");
+		File file = new File(path + "\\Resources\\MySQLConfig.xml");
 //		if(!file.exists()) {
 //			throw new IllegalAccessException("file not found");
 //		}
@@ -41,9 +50,11 @@ public class DatebaseInfo {
 			info.setDatebase(child.getChildText(DATABASE));
 			info.setUser(child.getChildText(USER_NAME));
 			info.setPassword(child.getChildText(PASSWORD));
+//			System.out.println(info.toString());
 		} catch (JDOMException | IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			//System.out.println(info.toString());
 		}
 	}
 	

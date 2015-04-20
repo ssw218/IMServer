@@ -5,7 +5,8 @@ import com.lyk.im.dao.DatabaseDao;
 public class DatebaseDaoTest {
 
 	public static void main(String[] args) {
-		DatabaseDao dao = new DatabaseDao();
+		// abandon
+		DatabaseDao dao = new DatabaseDao("");
 		dao.select();
 	}
 

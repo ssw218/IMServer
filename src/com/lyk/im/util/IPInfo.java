@@ -40,12 +40,12 @@ public class IPInfo {
 				buffer.append(temp + "\r\n");
 			}
 			//System.out.println(buffer);
-			int start = buffer.indexOf("[") + 1;
+			int start = buffer.indexOf("[");
 			int end = buffer.indexOf("]");
 			if (start < 0 || end < 0) {
 				return null;
 			}
-			ip = buffer.substring(start, end);
+			ip = buffer.substring(start + 1, end);
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

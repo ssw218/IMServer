@@ -6,9 +6,9 @@ import com.lyk.im.util.DatebaseInfo;
 public class DatebaseInfoTest {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+		// abandon
 		DatebaseInfo info = new DatebaseInfo();
-		info.readDatebaseInfo();
+		info.readDatebaseInfo("");
 		DatabaseBean bean = info.getDatebaseInfo();
 		System.out.println(bean.toString());
 	}

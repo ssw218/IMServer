@@ -16,28 +16,28 @@ public class DatabaseDao {
 	private Connection mConnection;
 	private Statement mStatement;
 	
-	static {
+	public DatabaseDao(String path) {
 		try {
 			Class.forName(DRIVER);
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}
-	
-	public DatabaseDao() {
 		DatebaseInfo info = new DatebaseInfo();
-		info.readDatebaseInfo();
+		info.readDatebaseInfo(path);
 		DatabaseBean bean = info.getDatebaseInfo();
+		//System.out.println(bean);
 		String url = "jdbc:mysql://" + bean.getServer() + ":" + bean.getPort() + "/" + bean.getDatabase();
 		try {
 			mConnection = DriverManager.getConnection(url, bean.getUser(), bean.getPassword());
 			mStatement = mConnection.createStatement();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
+	}
+	
+	public Statement getStatement() {
+		return mStatement;
 	}
 	
 	public void select() {
@@ -48,7 +48,6 @@ public class DatabaseDao {
 				System.out.println(result.getString("user_name"));
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
