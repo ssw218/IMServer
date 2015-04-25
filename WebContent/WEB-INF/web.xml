@@ -21,12 +21,22 @@
   </servlet-mapping>
   
   <servlet>
-  	<servlet-name>UserInfoUpdateServlet</servlet-name>
-  	<servlet-class>com.lyk.im.servlet.UserInfoUpdateServlet</servlet-class>
+  	<servlet-name>PhotoServlet</servlet-name>
+  	<servlet-class>com.lyk.im.servlet.PhotoServlet</servlet-class>
   </servlet>
   
   <servlet-mapping>
-  	<servlet-name>UserInfoUpdateServlet</servlet-name>
-  	<url-pattern>/UserInfoUpdateServlett</url-pattern>
+  	<servlet-name>PhotoServlet</servlet-name>
+  	<url-pattern>/PhotoServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>FriendsInfoServlet</servlet-name>
+  	<servlet-class>com.lyk.im.servlet.FriendsInfoServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>FriendsInfoServlet</servlet-name>
+  	<url-pattern>/FriendsInfoServlet</url-pattern>
   </servlet-mapping>
 </web-app>

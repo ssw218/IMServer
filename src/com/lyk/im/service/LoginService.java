@@ -1,5 +1,10 @@
 package com.lyk.im.service;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
+
+import com.lyk.im.bean.BaseUserBean;
 import com.lyk.im.bean.HostUserBean;
 import com.lyk.im.dao.UserInfoDao;
 
@@ -22,7 +27,7 @@ public class LoginService {
 	 * </userinfo>
 	 * */
 	
-	public static String getServletMessage(String path, String id, String password) {
+	public static String getLoginMessage(String path, String id, String password) {
 		UserInfoDao userInfoDao = new UserInfoDao(path);
 		boolean result = userInfoDao.checkUser(id, password);
 		if (!result) {
@@ -50,6 +55,26 @@ public class LoginService {
 			System.out.println(xml.toString());
 			return xml.toString();
 		}
+	}
+	
+	public static String getFriendMessage(String path, String id) {
+		UserInfoDao userInfoDao = new UserInfoDao(path);
+		BaseUserBean user = userInfoDao.getBaseUserInfo(id);
+		StringBuffer xml = new StringBuffer(HEAD);
+		
+		xml.append("<" + TAG_USER_INFO + ">");
+		xml.append("<" + TAG_NAME + ">");
+		xml.append(user.getUserName());
+		xml.append("</" + TAG_NAME + ">");
+		xml.append("<" + TAG_PHOTO + ">");
+		xml.append(user.getPhoto());
+		xml.append("</" + TAG_PHOTO + ">");
+		xml.append("<" + TAG_INTRODUCE + ">");
+		xml.append(user.getIntroduce());
+		xml.append("</" + TAG_INTRODUCE + ">");
+		xml.append("</" + TAG_USER_INFO + ">");
+		System.out.println(xml.toString());
+		return xml.toString();
 	}
 	
 }

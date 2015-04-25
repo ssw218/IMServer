@@ -13,7 +13,8 @@ public class ImageService {
 	
 	private static final String IMAGE_FORMAT = "png";
 	
-	public static byte[] imageToByte(String path) {
+	public static byte[] imageToByte(String rpath, String photo) {
+		String path = rpath + "\\Photo\\" + photo;
 		FileInputStream inputStream = null;
 		BufferedImage image = null;
 		ByteArrayOutputStream outputStream = null;
