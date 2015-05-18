@@ -15,20 +15,23 @@ public class UserInfoDao extends DatabaseDao {
 	private static final String FRIENDS = "friends";
 	private static final String GROUPS = "groups";
 	private static final String ID = "id";
+	private static final String PHONE = "phone";
 	private static final String PASSWORD = "password";
 	private static final String FIRST_REGISTER = "first_register";
 	private static final String LAST_ONLINE = "last_online";
 	private static final String IPS = "ips";
+	private static final String PHONE_NUMBER = "phone_number";
 	
 	public UserInfoDao(String path) {
 		super(path);
 	}
 	
-	public boolean checkUser(String id, String password) {
+	public boolean checkUser(String phone, String password) {
 		// select id from user_info where user_name='lyk' and password='123456'
 		System.out.println("checkUser");
-		String sql = "select * from " + TABLE_NAME + " where " + ID + "='" 
-				+ id + "' and " + PASSWORD + "='" + password + "'";
+		String sql = "select * from " + TABLE_NAME + " where " + PHONE_NUMBER + "='" 
+				+ phone + "' and " + PASSWORD + "='" + password + "'";
+		System.out.println(sql);
 		ResultSet resultSet = null;
 		try {
 			resultSet = getStatement().executeQuery(sql);
@@ -46,16 +49,36 @@ public class UserInfoDao extends DatabaseDao {
 		return false;
 	}
 	
-	public HostUserBean getHostUserInfo(String id){
+	public boolean checkPhoneNumber(String phone) {
+		String sql = "select * from " + TABLE_NAME + " where " + PHONE + "='" + phone;
+		ResultSet resultSet = null;
+		try {
+			resultSet = getStatement().executeQuery(sql);
+			if (resultSet.next())
+				return false;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				resultSet.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return true;
+	}
+	
+	public HostUserBean getHostUserInfo(String phone){
 		System.out.println("getHostUserInfo");
 		HostUserBean user = new HostUserBean();
 		// select user_name,photo,friends,groups,introduce from user_info where id=1
-		String sql = "select " + USER_NAME + "," + PHOTO + "," + FRIENDS + "," + GROUPS + "," + INTRODUCE + 
-				" from " + TABLE_NAME + " where " + ID + "=" + id;
+		String sql = "select " + ID + "," +  USER_NAME + "," + PHOTO + "," + FRIENDS + "," + GROUPS + "," + INTRODUCE + 
+				" from " + TABLE_NAME + " where " + PHONE_NUMBER + "=" + phone;
 		ResultSet resultSet = null;
 		try {
 			resultSet = getStatement().executeQuery(sql);
 			while(resultSet.next()) {
+				user.setId("" + resultSet.getInt(ID));
 				user.setUserName(resultSet.getString(USER_NAME));
 				user.setPhoto(resultSet.getString(PHOTO));
 				user.setFriends(resultSet.getString(FRIENDS));

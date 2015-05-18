@@ -31,12 +31,23 @@
   </servlet-mapping>
   
   <servlet>
-  	<servlet-name>FriendsInfoServlet</servlet-name>
-  	<servlet-class>com.lyk.im.servlet.FriendsInfoServlet</servlet-class>
+  	<servlet-name>FriendInfoServlet</servlet-name>
+  	<servlet-class>com.lyk.im.servlet.FriendInfoServlet</servlet-class>
   </servlet>
   
   <servlet-mapping>
-  	<servlet-name>FriendsInfoServlet</servlet-name>
-  	<url-pattern>/FriendsInfoServlet</url-pattern>
+  	<servlet-name>FriendInfoServlet</servlet-name>
+  	<url-pattern>/FriendInfoServlet</url-pattern>
   </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>ChatsServlet</servlet-name>
+  	<servlet-class>com.lyk.im.servlet.ChatsServlet</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>ChatsServlet</servlet-name>
+  	<url-pattern>/ChatsServlet</url-pattern>
+  </servlet-mapping>
+  
 </web-app>

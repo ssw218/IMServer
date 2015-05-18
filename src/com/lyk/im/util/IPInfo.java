@@ -10,7 +10,7 @@ import java.net.URL;
 import java.net.UnknownHostException;
 
 public class IPInfo {
-	
+	public static final String HOST_IP = "192.168.191.1";
 	private static final String API = "http://www.ip138.com/ip2city.asp";
 	
 	private IPInfo() {

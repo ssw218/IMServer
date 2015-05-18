@@ -22,10 +22,10 @@ public class LoginServlet extends HttpServlet {
 	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse respone) {
 		System.out.println("LoginServlet:doPost");
-		String id = request.getParameter("id");
+		String phone = request.getParameter("phone");
 		String password = request.getParameter("password");
 		String ip = request.getParameter("ip");
-		String result = "id: " + id + 
+		String result = "phone: " + phone + 
 				" password: " + password +
 				" ip: " + ip;
 		System.out.println(result);
@@ -33,7 +33,7 @@ public class LoginServlet extends HttpServlet {
 		String path = getServletContext().getRealPath("/");
 		try {
 			writer = respone.getWriter();
-			writer.write(LoginService.getLoginMessage(path, id, password));
+			writer.write(LoginService.getLoginMessage(path, phone, password));
 			writer.flush();
 		} catch (IOException e) {
 			e.printStackTrace();

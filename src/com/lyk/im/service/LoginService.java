@@ -11,6 +11,7 @@ import com.lyk.im.dao.UserInfoDao;
 public class LoginService {
 	private static final String HEAD = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>";
 	private static final String TAG_USER_INFO = "userinfo";
+	private static final String TAG_ID = "id";
 	private static final String TAG_NAME = "name";
 	private static final String TAG_PHOTO = "photo";
 	private static final String TAG_FRIENDS = "friends";
@@ -27,15 +28,18 @@ public class LoginService {
 	 * </userinfo>
 	 * */
 	
-	public static String getLoginMessage(String path, String id, String password) {
+	public static String getLoginMessage(String path, String phone, String password) {
 		UserInfoDao userInfoDao = new UserInfoDao(path);
-		boolean result = userInfoDao.checkUser(id, password);
+		boolean result = userInfoDao.checkUser(phone, password);
 		if (!result) {
 			return "false";
 		} else {
-			HostUserBean user = userInfoDao.getHostUserInfo(id);
+			HostUserBean user = userInfoDao.getHostUserInfo(phone);
 			StringBuffer xml = new StringBuffer(HEAD);
 			xml.append("<" + TAG_USER_INFO + ">");
+			xml.append("<" + TAG_ID + ">");
+			xml.append(user.getId());
+			xml.append("</" + TAG_ID + ">");
 			xml.append("<" + TAG_NAME + ">");
 			xml.append(user.getUserName());
 			xml.append("</" + TAG_NAME + ">");

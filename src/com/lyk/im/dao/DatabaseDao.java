@@ -16,12 +16,20 @@ public class DatabaseDao {
 	private Connection mConnection;
 	private Statement mStatement;
 	
-	public DatabaseDao(String path) {
+	public DatabaseDao() {
+		init();
+		String url = "jdbc:mysql://127.0.0.1:3306/instant_messaging";
 		try {
-			Class.forName(DRIVER);
-		} catch (ClassNotFoundException e) {
+			mConnection = DriverManager.getConnection(url, "root", "123456");
+			mStatement = mConnection.createStatement();
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public DatabaseDao(String path) {
+		init();
+		
 		DatebaseInfo info = new DatebaseInfo();
 		info.readDatebaseInfo(path);
 		DatabaseBean bean = info.getDatebaseInfo();
@@ -34,6 +42,14 @@ public class DatabaseDao {
 			e.printStackTrace();
 		}
 		
+	}
+	
+	private void init() {
+		try {
+			Class.forName(DRIVER);
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	public Statement getStatement() {

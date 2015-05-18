@@ -5,7 +5,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class UserBean extends HostUserBean {
-	private int id;
+	private String id;
+	private String phone;
 	private String password;
 	private Timestamp firstRegister;
 	private Timestamp lastOnline;
@@ -16,11 +17,11 @@ public class UserBean extends HostUserBean {
 		super();
 	}
 	
-	public int getId() {
+	public String getId() {
 		return id;
 	}
-
-	public void setId(int id) {
+	
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -54,6 +55,10 @@ public class UserBean extends HostUserBean {
 
 	public void setIps(String ips) {
 		this.ips = ips;
+	}
+
+	public String getPhoneNumber() {
+		return phone;
 	}
 	
 	
